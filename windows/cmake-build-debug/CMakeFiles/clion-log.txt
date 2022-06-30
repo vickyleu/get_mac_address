@@ -1,0 +1,40 @@
+/Users/vickyleu/Develop/Android/SDK/cmake/3.18.1/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=/Users/vickyleu/Develop/Android/SDK/ndk/24.0.8215888/toolchains/llvm/prebuilt/darwin-x86_64/bin/armv7a-linux-androideabi31-clang -DCMAKE_CXX_COMPILER=/Users/vickyleu/Develop/Android/SDK/ndk/24.0.8215888/toolchains/llvm/prebuilt/darwin-x86_64/bin/armv7a-linux-androideabi31-clang++ -G "CodeBlocks - Unix Makefiles" -S /Users/vickyleu/Develop/GitRepo/get_mac_address/windows -B /Users/vickyleu/Develop/GitRepo/get_mac_address/windows/cmake-build-debug
+-- The CXX compiler identification is Clang 14.0.1
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - failed
+-- Check for working CXX compiler: /Users/vickyleu/Develop/Android/SDK/ndk/24.0.8215888/toolchains/llvm/prebuilt/darwin-x86_64/bin/armv7a-linux-androideabi31-clang++
+-- Check for working CXX compiler: /Users/vickyleu/Develop/Android/SDK/ndk/24.0.8215888/toolchains/llvm/prebuilt/darwin-x86_64/bin/armv7a-linux-androideabi31-clang++ - broken
+CMake Error at /Users/vickyleu/Develop/Android/SDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeTestCXXCompiler.cmake:59 (message):
+  The C++ compiler
+
+    "/Users/vickyleu/Develop/Android/SDK/ndk/24.0.8215888/toolchains/llvm/prebuilt/darwin-x86_64/bin/armv7a-linux-androideabi31-clang++"
+
+  is not able to compile a simple test program.
+
+  It fails with the following output:
+
+    Change Dir: /Users/vickyleu/Develop/GitRepo/get_mac_address/windows/cmake-build-debug/CMakeFiles/CMakeTmp
+    
+    Run Build Command(s):/usr/bin/make cmTC_8a3fe/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_8a3fe.dir/build.make CMakeFiles/cmTC_8a3fe.dir/build
+    Building CXX object CMakeFiles/cmTC_8a3fe.dir/testCXXCompiler.cxx.o
+    /Users/vickyleu/Develop/Android/SDK/ndk/24.0.8215888/toolchains/llvm/prebuilt/darwin-x86_64/bin/armv7a-linux-androideabi31-clang++   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -o CMakeFiles/cmTC_8a3fe.dir/testCXXCompiler.cxx.o -c /Users/vickyleu/Develop/GitRepo/get_mac_address/windows/cmake-build-debug/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+    Linking CXX executable cmTC_8a3fe
+    /Users/vickyleu/Develop/Android/SDK/cmake/3.18.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8a3fe.dir/link.txt --verbose=1
+    /Users/vickyleu/Develop/Android/SDK/ndk/24.0.8215888/toolchains/llvm/prebuilt/darwin-x86_64/bin/armv7a-linux-androideabi31-clang++  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_8a3fe.dir/testCXXCompiler.cxx.o -o cmTC_8a3fe 
+    ld: error: unknown argument '-search_paths_first'
+    clang-14: error: linker command failed with exit code 1 (use -v to see invocation)
+    make[1]: *** [cmTC_8a3fe] Error 1
+    make: *** [cmTC_8a3fe/fast] Error 2
+    
+    
+
+  
+
+  CMake will not be able to correctly generate this project.
+Call Stack (most recent call first):
+  CMakeLists.txt:9 (project)
+
+
+-- Configuring incomplete, errors occurred!
+See also "/Users/vickyleu/Develop/GitRepo/get_mac_address/windows/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+See also "/Users/vickyleu/Develop/GitRepo/get_mac_address/windows/cmake-build-debug/CMakeFiles/CMakeError.log".

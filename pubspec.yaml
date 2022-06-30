@@ -1,0 +1,38 @@
+name: get_mac_address
+description: A new Flutter project.
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: ">=2.17.5 <3.0.0"
+  flutter: ">=2.5.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
+  plugin_platform_interface: ^2.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.example.get_mac_address
+        pluginClass: GetMacAddressPlugin
+      ios:
+        pluginClass: GetMacAddressPlugin
+      linux:
+        pluginClass: GetMacAddressPlugin
+      macos:
+        pluginClass: GetMacAddressPlugin
+      windows:
+        pluginClass: GetMacAddressPluginCApi
+      web:
+        pluginClass: GetMacAddressWeb
+        fileName: get_mac_address_web.dart
