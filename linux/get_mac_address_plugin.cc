@@ -3,6 +3,9 @@
 #include <flutter_linux/flutter_linux.h>
 #include <gtk/gtk.h>
 #include <sys/utsname.h>
+#include <sys/ioctl.h>
+#include <net/if.h>
+#include <netinet/in.h>
 
 #include <cstring>
 
@@ -29,7 +32,6 @@ static void get_mac_address_plugin_handle_method_call(
       int fd = socket(PF_INET, SOCK_DGRAM, IPPROTO_IP);
       strcpy(s.ifr_name, "eth0");
       if (0 == ioctl(fd, SIOCGIFHWADDR, &s)) {
-        int i;
         //g_autofree gchar *version = g_strdup_printf("Linux %s", uname_data.version);
         g_autofree gchar *mac_addr = (char*)malloc(18);
         sprintf(mac_addr, "%02X:%02X:%02X:%02X:%02X:%02X",

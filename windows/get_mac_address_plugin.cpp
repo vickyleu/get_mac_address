@@ -3,6 +3,7 @@
 // This must be included before many other Windows headers.
 #include <windows.h>
 #include <iptypes.h>
+#include <iphlpapi.h>
 
 // For getPlatformVersion; remove unless needed for your plugin implementation.
 #include <VersionHelpers.h>
@@ -58,11 +59,10 @@ char* GetMacAddressPlugin::getMAC() {
     char *mac_addr = (char*)malloc(18);
     AdapterInfo=(IP_ADAPTER_INFO *)malloc(sizeof(IP_ADAPTER_INFO));
     if (AdapterInfo==NULL){
-    printf("Error allocating memory needed to call GetAdaptersinfo\n");
-    free(mac_addr);
-    return NULL; // it is safe to call free(NULL)
-  }
-
+        printf("Error allocating memory needed to call GetAdaptersinfo\n");
+        free(mac_addr);
+        return NULL; // it is safe to call free(NULL)
+    }
   // Make an initial call to GetAdaptersInfo to get the necessary size into the dwBufLen variable
   if (GetAdaptersInfo(AdapterInfo, &dwBufLen) == ERROR_BUFFER_OVERFLOW) {
     free(AdapterInfo);
@@ -80,10 +80,20 @@ char* GetMacAddressPlugin::getMAC() {
     do {
       // technically should look at pAdapterInfo->AddressLength
       //   and not assume it is 6.
-      sprintf(mac_addr, "%02X:%02X:%02X:%02X:%02X:%02X",
-        pAdapterInfo->Address[0], pAdapterInfo->Address[1],
-        pAdapterInfo->Address[2], pAdapterInfo->Address[3],
-        pAdapterInfo->Address[4], pAdapterInfo->Address[5]);
+      //sprintf_s(mac_addr, "%02X:%02X:%02X:%02X:%02X:%02X",
+      //  pAdapterInfo->Address[0], pAdapterInfo->Address[1],
+      //  pAdapterInfo->Address[2], pAdapterInfo->Address[3],
+      //  pAdapterInfo->Address[4], pAdapterInfo->Address[5]);
+
+        char filename[1024];
+        char path1[128] = "D:\\Program\\Tesseract-OCR\\tesseract.exe";
+        char path2[128] = "D:\\Program\\Tesseract-OCR\\";
+        char path3[128] = "D:\\Program\\Tesseract-OCR\\txt";
+        char path4[128] = "-l chi_sim";
+        sprintf_s(filename,"%s %s %s %s",path1,path2,path3,path4);
+
+
+
       printf("Address: %s, mac: %s\n", pAdapterInfo->IpAddressList.IpAddress.String, mac_addr);
       // print them all, return the last one.
       // return mac_addr;
