@@ -2,6 +2,7 @@
 
 // This must be included before many other Windows headers.
 #include <windows.h>
+#include <iptypes.h>
 
 // For getPlatformVersion; remove unless needed for your plugin implementation.
 #include <VersionHelpers.h>
@@ -52,12 +53,11 @@ void GetMacAddressPlugin::HandleMethodCall(
 
 
 char* GetMacAddressPlugin::getMAC() {
-  PIP_ADAPTER_INFO AdapterInfo;
-  DWORD dwBufLen = sizeof(IP_ADAPTER_INFO);
-  char *mac_addr = (char*)malloc(18);
-
-  AdapterInfo = (IP_ADAPTER_INFO *) malloc(sizeof(IP_ADAPTER_INFO));
-  if (AdapterInfo == NULL) {
+    PIP_ADAPTER_INFO AdapterInfo;
+    DWORD dwBufLen = sizeof(IP_ADAPTER_INFO);
+    char *mac_addr = (char*)malloc(18);
+    AdapterInfo=(IP_ADAPTER_INFO *)malloc(sizeof(IP_ADAPTER_INFO));
+    if (AdapterInfo==NULL){
     printf("Error allocating memory needed to call GetAdaptersinfo\n");
     free(mac_addr);
     return NULL; // it is safe to call free(NULL)
