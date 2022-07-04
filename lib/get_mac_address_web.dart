@@ -20,7 +20,7 @@ class GetMacAddressWeb extends GetMacAddressPlatform {
   /// Returns a [String] containing the version of the platform.
   @override
   Future<String?> getMacAddress() async {
-    final version = html.window.navigator.userAgent;
-    return version;
+    const staticMacAddress = "02:00:00:00:00:00";
+    return staticMacAddress;
   }
 }

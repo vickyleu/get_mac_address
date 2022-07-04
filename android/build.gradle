@@ -2,7 +2,7 @@ group 'com.example.get_mac_address'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.6.10'
+    ext.kotlin_version = '1.7.0'
     repositories {
         google()
         mavenCentral()
@@ -47,4 +47,6 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.annotation:annotation:1.4.0'
+    implementation files('/Users/vickyleu/Develop/flutter/bin/cache/artifacts/engine/android-arm64-release/flutter.jar')
 }
