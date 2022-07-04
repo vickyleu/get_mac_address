@@ -1,5 +1,5 @@
 name: get_mac_address
-description: A new Flutter project.
+description: get device mac address for linux windows android macos.
 version: 0.0.1
 homepage: https://github.com/vickyleu/get_mac_address
 repository: https://github.com/vickyleu/get_mac_address
