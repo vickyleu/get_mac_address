@@ -15,6 +15,8 @@
 #include <memory>
 #include <sstream>
 
+#pragma comment(lib, "iphlpapi.lib")
+
 namespace get_mac_address {
 
 // static
@@ -42,6 +44,7 @@ GetMacAddressPlugin::~GetMacAddressPlugin() {}
 void GetMacAddressPlugin::HandleMethodCall(
     const flutter::MethodCall<flutter::EncodableValue> &method_call,
     std::unique_ptr<flutter::MethodResult<flutter::EncodableValue>> result) {
+      printf("HandleMethodCall\n");
   if (method_call.method_name().compare("getMacAddress") == 0) {
     char* pMac = get_mac_address::GetMacAddressPlugin::getMAC();
     std::string macAddress = std::string(pMac);
