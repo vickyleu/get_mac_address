@@ -9,6 +9,8 @@ public class SwiftGetMacAddressPlugin: NSObject, FlutterPlugin {
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-    result(FlutterMethodNotImplemented)
+    let staticMacAddress = "02:00:00:00:00:00"
+    result(staticMacAddress)
+//     result(FlutterMethodNotImplemented)
   }
 }
