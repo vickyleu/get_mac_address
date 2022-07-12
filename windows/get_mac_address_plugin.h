@@ -1,4 +1,4 @@
-Y#ifndef FLUTTER_PLUGIN_GET_MAC_ADDRESS_PLUGIN_H_
+#ifndef FLUTTER_PLUGIN_GET_MAC_ADDRESS_PLUGIN_H_
 #define FLUTTER_PLUGIN_GET_MAC_ADDRESS_PLUGIN_H_
 
 #include <flutter/method_channel.h>
@@ -27,6 +27,7 @@ class GetMacAddressPlugin : public flutter::Plugin {
       std::unique_ptr<flutter::MethodResult<flutter::EncodableValue>> result);
 
   char* getMAC();
+
 };
 
 }  // namespace get_mac_address
