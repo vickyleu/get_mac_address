@@ -14,8 +14,8 @@ set(PLUGIN_NAME "get_mac_address_plugin")
 
 # Any new source files that you add to the plugin should be added here.
 list(APPEND PLUGIN_SOURCES
-  "GetMacAddressPlugin.cpp"
-  "GetMacAddressPlugin.h"
+  "get_mac_address_plugin.cpp"
+  "get_mac_address_plugin.h"
 )
 
 # Define the plugin library target. Its name must not be changed (see comment
