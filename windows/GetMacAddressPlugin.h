@@ -8,13 +8,13 @@
 
 namespace get_mac_address {
 
-class GetMacAddressPlugin : public flutter::Plugin {
+class GetMacAddressPlugin final : public flutter::Plugin {
  public:
   static void RegisterWithRegistrar(flutter::PluginRegistrarWindows *registrar);
 
   GetMacAddressPlugin();
 
-  virtual ~GetMacAddressPlugin();
+  ~GetMacAddressPlugin() override;
 
   // Disallow copy and assign.
   GetMacAddressPlugin(const GetMacAddressPlugin&) = delete;
@@ -24,9 +24,9 @@ class GetMacAddressPlugin : public flutter::Plugin {
   // Called when a method is called on this plugin's channel from Dart.
   void HandleMethodCall(
       const flutter::MethodCall<flutter::EncodableValue> &method_call,
-      std::unique_ptr<flutter::MethodResult<flutter::EncodableValue>> result);
+      std::unique_ptr<flutter::MethodResult<flutter::EncodableValue>> result) const;
 
-  char* getMAC();
+  [[nodiscard]] char* getMAC() const;
 
 };
 
