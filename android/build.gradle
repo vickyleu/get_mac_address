@@ -49,5 +49,5 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.annotation:annotation:1.5.0'
     //noinspection GradlePath
-    compileOnly files('/Users/vickyleu/Develop/flutter/bin/cache/artifacts/engine/android-arm64-release/flutter.jar')
+    compileOnly "io.flutter:flutter_embedding_debug:1.0.0-c08d7d5efc9aa6eb3c30cfb3be6dc09bca5e7631"
 }
