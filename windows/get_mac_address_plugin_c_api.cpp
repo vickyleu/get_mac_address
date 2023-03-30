@@ -2,7 +2,7 @@
 
 #include <flutter/plugin_registrar_windows.h>
 
-#include "GetMacAddressPlugin.h"
+#include "get_mac_address_plugin.h"
 
 void GetMacAddressPluginCApiRegisterWithRegistrar(
     FlutterDesktopPluginRegistrarRef registrar) {
