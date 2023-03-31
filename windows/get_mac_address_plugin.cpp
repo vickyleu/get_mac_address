@@ -1,4 +1,4 @@
-#include "GetMacAddressPlugin.h"
+#include "get_mac_address_plugin.h"
 
 // This must be included before many other Windows headers.
 #include <windows.h>
