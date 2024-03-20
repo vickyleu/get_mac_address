@@ -84,17 +84,17 @@ char* GetMacAddressPlugin::getMAC() const
     do {
       // technically should look at pAdapterInfo->AddressLength
       //   and not assume it is 6.
-      //sprintf_s(mac_addr, "%02X:%02X:%02X:%02X:%02X:%02X",
-      //  pAdapterInfo->Address[0], pAdapterInfo->Address[1],
-      //  pAdapterInfo->Address[2], pAdapterInfo->Address[3],
-      //  pAdapterInfo->Address[4], pAdapterInfo->Address[5]);
+      sprintf_s(mac_addr, 18, "%02X:%02X:%02X:%02X:%02X:%02X",
+                  pAdapterInfo->Address[0], pAdapterInfo->Address[1],
+                  pAdapterInfo->Address[2], pAdapterInfo->Address[3],
+                  pAdapterInfo->Address[4], pAdapterInfo->Address[5]);
 
-        char filename[1024];
-        char path1[128] = R"(D:\Program\Tesseract-OCR\tesseract.exe)";
-        char path2[128] = R"(D:\Program\Tesseract-OCR\)";
-        char path3[128] = R"(D:\Program\Tesseract-OCR\txt)";
-        char path4[128] = "-l chi_sim";
-        sprintf_s(filename,"%s %s %s %s",path1,path2,path3,path4);
+       // char filename[1024];
+       // char path1[128] = R"(D:\Program\Tesseract-OCR\tesseract.exe)";
+       // char path2[128] = R"(D:\Program\Tesseract-OCR\)";
+       // char path3[128] = R"(D:\Program\Tesseract-OCR\txt)";
+       // char path4[128] = "-l chi_sim";
+       // sprintf_s(filename,"%s %s %s %s",path1,path2,path3,path4);
 
 
 
