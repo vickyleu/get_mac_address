@@ -48,9 +48,13 @@ void GetMacAddressPlugin::HandleMethodCall(
       printf("HandleMethodCall\n");
   if (method_call.method_name() == "getMacAddress") {
     char* pMac = getMAC();
+    if (pMac == nullptr) {
+      result->Success(flutter::EncodableValue("00:00:00:00:00:00"));
+      return;
+    }
     const std::string macAddress = std::string(pMac);
     free(pMac);
-    result->Success(flutter::EncodableValue(macAddress.c_str()));
+    result->Success(flutter::EncodableValue(macAddress));
   } else {
     result->NotImplemented();
   }
@@ -60,7 +64,11 @@ void GetMacAddressPlugin::HandleMethodCall(
 char* GetMacAddressPlugin::getMAC() const
 {
   DWORD dwBufLen = sizeof(IP_ADAPTER_INFO);
-    char *mac_addr = static_cast<char*>(malloc(18));
+  auto mac_addr = static_cast<char*>(malloc(18));
+  if (mac_addr == nullptr) {
+    return nullptr;
+  }
+  mac_addr[0] = '\0';
   auto AdapterInfo = static_cast<IP_ADAPTER_INFO*>(malloc(sizeof(IP_ADAPTER_INFO)));
     if (AdapterInfo== nullptr){
         printf("Error allocating memory needed to call GetAdaptersinfo\n");
@@ -82,31 +90,20 @@ char* GetMacAddressPlugin::getMAC() const
     // Contains pointer to current adapter info
     PIP_ADAPTER_INFO pAdapterInfo = AdapterInfo;
     do {
-      // technically should look at pAdapterInfo->AddressLength
-      //   and not assume it is 6.
-      //sprintf_s(mac_addr, "%02X:%02X:%02X:%02X:%02X:%02X",
-      //  pAdapterInfo->Address[0], pAdapterInfo->Address[1],
-      //  pAdapterInfo->Address[2], pAdapterInfo->Address[3],
-      //  pAdapterInfo->Address[4], pAdapterInfo->Address[5]);
-
-        char filename[1024];
-        char path1[128] = R"(D:\Program\Tesseract-OCR\tesseract.exe)";
-        char path2[128] = R"(D:\Program\Tesseract-OCR\)";
-        char path3[128] = R"(D:\Program\Tesseract-OCR\txt)";
-        char path4[128] = "-l chi_sim";
-        sprintf_s(filename,"%s %s %s %s",path1,path2,path3,path4);
-
-
-
-      printf("Address: %s, mac: %s\n", pAdapterInfo->IpAddressList.IpAddress.String, mac_addr);
-      // print them all, return the last one.
-      // return mac_addr;
-
-      printf("\n");
+      if (pAdapterInfo->AddressLength >= 6) {
+        sprintf_s(mac_addr, 18, "%02X:%02X:%02X:%02X:%02X:%02X",
+          pAdapterInfo->Address[0], pAdapterInfo->Address[1],
+          pAdapterInfo->Address[2], pAdapterInfo->Address[3],
+          pAdapterInfo->Address[4], pAdapterInfo->Address[5]);
+        break;
+      }
       pAdapterInfo = pAdapterInfo->Next;
     } while(pAdapterInfo);
   }
   free(AdapterInfo);
+  if (mac_addr[0] == '\0') {
+    sprintf_s(mac_addr, 18, "%s", "00:00:00:00:00:00");
+  }
   return mac_addr; // caller must free.
 }
 
